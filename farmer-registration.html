@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Irrigation Advisory</title>
+        <link rel="stylesheet" href="webdev1yt.css">
+        <link rel="icon" type="image/x-icon" href="fasal.png">
+    </head>
+    <body>
+        <img src="fasal.png" class="logo">
+        <h1 align="center">Smart Irrigation Advisory Portal</h1>
+        <div class="date">Autumn 2026</div>
+        <h2 align="center">Fasal Co. Limited</h2>
+        <div class="navi"><a href="navigation.html">Navigation Page</a></div>
+        <ul class="nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="irrigation-advisory.html">Irrigation Advisory</a></li>
+            <li><a href="farm-information.html">Farm Information & Sensors</a></li>
+            <li><a href="https://krishi.maharashtra.gov.in/">Department of Agriculture Website</a></li>
+            <li><a href="farm-map.html">Plot Map</a></li>
+            <li><a href="recommendation.html">Recommendation</a></li>
+            <li><a href="farmer-registration.html">Registration Forms</a></li>
+            <li><a href="media.html">Media and Awareness</a></li>
+            <li><a href="about-system.html">About</a></li>
+        </ul>
+        <br>
+        <br>
+        <h1>Farmer Registration</h1>
+
+    <form>
+
+        <fieldset>
+
+            <legend>Farmer Information</legend>
+
+            <label for="farmerName">Farmer Name:</label>
+            <input
+                type="text"
+                id="farmerName"
+                name="farmerName"
+                placeholder="Enter farmer name"
+            >
+
+            <label for="mobile">Mobile Number:</label>
+            <input
+                type="text"
+                id="mobile"
+                name="mobile"
+                placeholder="Enter mobile number"
+            >
+
+            <label for="email">Email Address:</label>
+            <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Enter email address">
+
+            <label for="village">Village:</label>
+            <input
+                type="text"
+                id="village"
+                name="village"
+                placeholder="Enter village name"
+            >
+
+        </fieldset>
+
+
+        <fieldset>
+
+            <legend>Farm Information</legend>
+
+            <label for="plotId">Plot ID:</label>
+            <input
+                type="text"
+                id="plotId"
+                name="plotId"
+                placeholder="Enter plot ID"
+                >
+
+            <label for="crop">Crop Variety:</label>
+            <input
+                type="text"
+                id="crop"
+                name="crop"
+                placeholder="Enter Crop Variety"
+                >
+
+            <label for="area">Farm Area (hectares):</label>
+            <input
+                type="number"
+                id="area"
+                name="area"
+                placeholder="Enter farm area"
+            >
+
+            <label for="irrigation">Irrigation Method:</label>
+
+            <select
+                id="irrigation"
+                name="irrigation"
+                >
+
+                <option value="">Select Method</option>
+                <option value="drip">Drip Irrigation</option>
+                <option value="sprinkler">Sprinkler Irrigation</option>
+                <option value="flood">Flood Irrigation</option>
+
+            </select>
+
+        </fieldset>
+
+
+        <fieldset>
+
+            <legend>Preferences</legend>
+
+            <p><b>Preferred Language:</b></p>
+
+                <input
+                    type="radio"
+                    id="english"
+                    name="language"
+                    value="english"
+                >
+
+                <label for="english">English</label>
+            
+                <input
+                    type="radio"
+                    id="hindi"
+                    name="language"
+                    value="hindi">
+
+                <label for="hindi">Hindi</label>
+            
+                <input
+                    type="radio"
+                    id="marathi"
+                    name="language"
+                    value="marathi">
+
+                <label for="marathi">Marathi</label>
+            
+
+
+            <p><b>Advisory Services Required:</b></p>
+
+            <div class="option">
+                <input
+                    type="checkbox"
+                    id="irrigationAdvice"
+                    name="services"
+                    value="irrigation">
+
+                <label for="irrigationAdvice">
+                    Irrigation Advisory
+                </label>
+            </div>
+
+            <div class="option">
+                <input
+                    type="checkbox"
+                    id="weather"
+                    name="services"
+                    value="weather">
+
+                <label for="weather">
+                    Weather Alerts
+                </label>
+            </div>
+
+            <div class="option">
+                <input
+                    type="checkbox"
+                    id="cropAdvice"
+                    name="services"
+                    value="crop">
+
+                <label for="cropAdvice">
+                    Crop Advisory
+                </label>
+            </div>
+
+            <div class="option">
+                <input
+                    type="checkbox"
+                    id="pest"
+                    name="services"
+                    value="pest">
+
+                <label for="pest">
+                    Pest and Disease Alerts
+                </label>
+            </div>
+
+        </fieldset>
+
+
+        <button type="submit">Submit</button>
+
+        <button type="reset">Reset</button>
+
+    </form>
+
+        <footer>
+            <p>&copy; 2026 Yatharth Gahane. All Rights Reserved.</p>
+        </footer>
+    </body>
+</html>  
