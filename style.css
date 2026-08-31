@@ -3,7 +3,9 @@ body{
     font-family: Calibri;
     background-color: rgb(188, 255, 233);
 }
-
+h1{
+    color:black;
+}
 .nav{
     list-style-type: none;
     margin: 0;
