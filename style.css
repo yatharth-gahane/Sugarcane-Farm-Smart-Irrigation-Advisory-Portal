@@ -133,3 +133,17 @@ iframe {
             max-width: 100%;
             border: 1px solid #555;
         }
+.bcard {
+    width: 250px;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid green;
+    background-color: #3fb43f;
+    box-shadow: 0 4px 8px rgba(73, 73, 73, 0.3);
+    text-align: center;
+    display: inline-block;
+    border-radius: 10px;
+}
+.bcard:hover {
+    background-color: #8abe75;
+}
