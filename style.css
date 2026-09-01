@@ -141,6 +141,7 @@ iframe {
     box-shadow: 0 4px 8px rgba(73, 73, 73, 0.3);
     text-align: center;
     border-radius: 10px;
+    box-sizing: border-box; 
 }
 .bcard:hover {
     background-color: #8abe75;
