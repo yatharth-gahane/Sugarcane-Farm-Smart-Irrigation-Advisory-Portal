@@ -135,22 +135,19 @@ iframe {
         }
 .bcard {
     width: 250px;
-    margin: 20px;
     padding: 20px;
     border: 2px solid green;
     background-color: #3fb43f;
     box-shadow: 0 4px 8px rgba(73, 73, 73, 0.3);
     text-align: center;
-    display: inline-block;
-    vertical-align: top;
     border-radius: 10px;
 }
 .bcard:hover {
     background-color: #8abe75;
 }
 .boxcont{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 250px 250px;
+    gap: 20px;
     justify-content: center;
-    width: 650px;
 }
