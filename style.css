@@ -175,16 +175,13 @@ iframe {
     width: 70%;
     margin: 25px auto;
     padding: 20px;
-
-    background-color: #fff3cd;
-    border: 3px solid orange;
+    background-color: yellow;
+    border: 5px solid red;
     border-radius: 10px;
-
     text-align: center;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
-
-    box-shadow: 0 0 10px orange;
+    box-shadow: 0 0 30px red;
     text-shadow: 2px 2px 3px gray;
 
     animation: offerGlow 1s infinite alternate;
@@ -192,15 +189,14 @@ iframe {
 
 @keyframes offerGlow {
     from {
-        box-shadow: 0 0 5px orange;
+        box-shadow: 0 0 5px red;
     }
 
     to {
-        box-shadow: 0 0 30px orange;
+        box-shadow: 0 0 30px red;
     }
 }
 
 .offer:hover {
-    background-color: #ffe082;
-    transform: scale(1.05);
+    background-color: orange;
 }
