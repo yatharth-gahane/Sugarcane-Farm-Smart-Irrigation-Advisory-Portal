@@ -1,0 +1,97 @@
+/* Registration Form Styling */
+
+form {
+    width: 70%;
+    margin: 30px auto;
+}
+
+/* Fieldset styling */
+fieldset {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 2px solid #2e8b57;
+    border-radius: 10px;
+}
+
+/* Legend styling */
+legend {
+    padding: 5px 12px;
+    font-weight: bold;
+    color: #2e8b57;
+    background-color: white;
+    border: 1px solid #2e8b57;
+    border-radius: 6px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Text and number input boxes */
+input[type="text"],
+input[type="number"] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+/* Focus effect */
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border: 2px solid #2e8b57;
+    background-color: #f1fff1;
+}
+
+/* Select box */
+select {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 6px;
+}
+
+/* Radio buttons and checkboxes */
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Keep radio labels inline */
+input[type="radio"] + label {
+    display: inline;
+    margin-right: 15px;
+}
+
+/* Service options */
+.option {
+    margin: 10px 0;
+}
+
+.option label {
+    display: inline;
+}
+
+/* Buttons */
+button {
+    padding: 10px 25px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2e8b57;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #1f6b42;
+}
