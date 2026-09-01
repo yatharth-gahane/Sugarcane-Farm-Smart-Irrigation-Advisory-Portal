@@ -152,3 +152,21 @@ iframe {
     gap: 20px;
     justify-content: center;
 }
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+.gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border: 3px solid #4a7c1f;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+.gallery img:hover {
+    transform: scale(1.05);
+}
