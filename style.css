@@ -171,35 +171,36 @@ iframe {
 .gallery img:hover {
     transform: scale(1.1);
 }
-
 .offer {
     width: 70%;
     margin: 25px auto;
     padding: 20px;
 
     background-color: #fff3cd;
-    border: 2px solid #ff9800;
+    border: 3px solid orange;
     border-radius: 10px;
 
     text-align: center;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
 
-    box-shadow: 0 0 15px rgba(255, 152, 0, 0.6);
-    text-shadow: 1px 1px 2px #999;
+    box-shadow: 0 0 10px orange;
+    text-shadow: 2px 2px 3px gray;
 
-    animation: glow 1.5s infinite alternate;
+    animation: offerGlow 1s infinite alternate;
 }
-@keyframes glow {
+
+@keyframes offerGlow {
     from {
-        box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+        box-shadow: 0 0 5px orange;
     }
 
     to {
-        box-shadow: 0 0 20px rgba(255, 152, 0, 0.9);
+        box-shadow: 0 0 30px orange;
     }
 }
+
 .offer:hover {
     background-color: #ffe082;
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
