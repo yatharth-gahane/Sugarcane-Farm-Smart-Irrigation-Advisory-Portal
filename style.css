@@ -148,3 +148,9 @@ iframe {
 .bcard:hover {
     background-color: #8abe75;
 }
+.boxcont{
+    display: grid;
+    grid-template-columns: repeat(2, 250px);
+    gap: 30px;
+    justify-content: center;
+}
