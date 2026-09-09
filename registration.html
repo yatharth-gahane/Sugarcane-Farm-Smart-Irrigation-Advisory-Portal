@@ -20,6 +20,9 @@
                 if (farmerName === ""){
                     fError.textContent = "Farmer name is required.";
                     v = false;
+                } else if (!/^[a-zA-Z\s]+$/.test(farmerName)) {
+                    fError.textContent = "Farmer name must contain only alphabets and spaces";
+                    v = false;
                 } else {
                     fError.textContent = "";
                 }
