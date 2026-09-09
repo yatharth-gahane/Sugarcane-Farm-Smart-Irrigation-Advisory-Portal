@@ -9,8 +9,8 @@
         <script>
             function validate(){
                 let v = true;
-                let fName = document.getElementById("fName").value.trim();
-                let pId = document.getElementById("pId").value.trim();
+                let farmerName = document.getElementById("farmerName").value.trim();
+                let plotId = document.getElementById("plotId").value.trim();
                 let village = document.getElementById("village").value.trim();
 
                 let fError = document.getElementById("fError");
@@ -36,8 +36,8 @@
                     vError.textContent = "";
                 }
                 
-                document.getElementById("fName").value = fName;
-                document.getElementById("pId").value = pId;
+                document.getElementById("farmerName").value = fName;
+                document.getElementById("plotId").value = pId;
                 document.getElementById("village").value = village;
 
                 return v;
