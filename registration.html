@@ -9,16 +9,38 @@
         <script>
             function validate(){
                 let v = true;
-                let farmerName = document.getElementById("farmerName").value.trim();
-                let plotId = document.getElementById("plotId").value.trim();
+                let fName = document.getElementById("fName").value.trim();
+                let pId = document.getElementById("pId").value.trim();
                 let village = document.getElementById("village").value.trim();
 
                 let fError = document.getElementById("fError");
-                let pError = document.getElementById("pError")
+                let pError = document.getElementById("pError");
+                let vError = document.getElementById("vError");
 
                 if (farmerName === ""){
-                    
+                    fError.textContent = "Farmer name is required.";
+                    v = false;
+                } else {
+                    fError.textContent = "";
                 }
+                if (plotId === ""){
+                    pError.textContent = "Plot ID is required.";
+                    v = false;
+                } else {
+                    pError.textContent = "";
+                }
+                if (village === ""){
+                    vError.textContent = "Village is required.";
+                    v = false;
+                } else {
+                    vError.textContent = "";
+                }
+                
+                document.getElementById("fName").value = fName;
+                document.getElementById("pId").value = pId;
+                document.getElementById("village").value = village;
+
+                return v;
             }
         </script>
     </head>
@@ -80,6 +102,8 @@
                 name="village"
                 placeholder="Enter village name"
             >
+            <span id="vError" class="error"></span>
+            <br>
 
         </fieldset>
 
@@ -95,7 +119,7 @@
                 name="plotId"
                 placeholder="Enter plot ID"
                 >
-            <span id></span>
+            <span id="pError" class="error"> </span>
             <br>
             <label for="crop">Crop Variety:</label>
             <input
