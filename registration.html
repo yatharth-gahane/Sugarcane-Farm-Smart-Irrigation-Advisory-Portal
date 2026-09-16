@@ -7,7 +7,7 @@
         <link rel="icon" type="image/x-icon" href="fasal.png">
         <style> .error { color: red; font-size: 14px; margin-left: 10px; } .valid { color: green; .invalid { border: 2px solid red; background-color: #ffe6e6;}} </style> 
         <script>
-            function validate(){
+            function validate(event){
                 let v = true;
                 let farmerName = document.getElementById("farmerName").value.trim();
                 let plotId = document.getElementById("plotId").value.trim();
@@ -132,6 +132,11 @@
                 document.getElementById("village").value = village;
                 document.getElementById("mobile").value = mobile;
                 document.getElementById("email").value = email;
+
+                if(v){
+                    event.preventDefault();
+                    alert("Registration submitted successfully!");
+                }
 
                 return v;
             }
