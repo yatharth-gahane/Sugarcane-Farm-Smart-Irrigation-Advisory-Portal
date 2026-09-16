@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="form.css">
         <link rel="icon" type="image/x-icon" href="fasal.png">
-        <style> .error { color: red; font-size: 14px; margin-left: 10px; } .valid { color: green; } </style>
+        <style> .error { color: red; font-size: 14px; margin-left: 10px; } .valid { color: green; .invalid { border: 2px solid red; background-color: #ffe6e6;}} </style> 
         <script>
             function validate(){
                 let v = true;
@@ -280,6 +280,56 @@
                     Pest and Disease Alerts
                 </label>
             </div>
+
+        </fieldset>
+        <fieldset>
+            <label for="cropStage">Crop Stage:</label>
+            <select id="cropStage" name="cropStage">
+                <option value="">Select Crop Stage</option>
+                <option value="sowing">Sowing</option>
+                <option value="growing">Growing</option>
+                <option value="flowering">Flowering</option>
+                <option value="harvesting">Harvesting</option>
+            </select>
+            <br>
+            <span id="cropStageError" class="error"></span>
+            <br>
+
+
+            <label for="soilType">Soil Type:</label>
+            <select id="soilType" name="soilType">
+                <option value="">Select Soil Type</option>
+                <option value="black">Black Soil</option>
+                <option value="red">Red Soil</option>
+                <option value="alluvial">Alluvial Soil</option>
+                <option value="sandy">Sandy Soil</option>
+            </select>
+            <br>
+            <span id="soilError" class="error"></span>
+            <br>
+
+
+            <label for="irrigation">Irrigation Method:</label>
+            <select id="irrigation" name="irrigation">
+                <option value="">Select Method</option>
+                <option value="drip">Drip Irrigation</option>
+                <option value="sprinkler">Sprinkler Irrigation</option>
+                <option value="flood">Flood Irrigation</option>
+            </select>
+            <br>
+            <span id="irrigationError" class="error"></span>
+            <br>
+
+
+            <label for="registrationDate">Registration Date:</label>
+            <input 
+                type="date"
+                id="registrationDate"
+                name="registrationDate">
+
+            <br>
+            <span id="dateError" class="error"></span>
+            <br>
 
         </fieldset>
 
