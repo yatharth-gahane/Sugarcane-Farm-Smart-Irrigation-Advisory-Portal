@@ -24,10 +24,10 @@
                 let vError = document.getElementById("vError");
                 let mError = document.getElementById("mError");
                 let eError = document.getElementById("eError");
-                let cropStageError = document.getElementById("cropStageError");
-                let soilError = document.getElementById("soilError");
-                let irrigationError = document.getElementById("irrigationError");
-                let dateError = document.getElementById("dateError");
+                let cError = document.getElementById("cropStageError");
+                let sError = document.getElementById("soilError");
+                let iError = document.getElementById("irrigationError");
+                let dError = document.getElementById("dateError");
 
                 if (farmerName === ""){
                     fError.textContent = "Farmer name is required.";
@@ -79,32 +79,32 @@
                 eError.textContent = "";
                 }
                 if (cropStage.value === "") {
-                    cropStageError.textContent = "Please select crop stage.";
+                    cError.textContent = "Please select crop stage.";
                     cropStage.classList.add("invalid");
                     v = false;
                 }
                 else {
-                    cropStageError.textContent = "";
+                    cError.textContent = "";
                     cropStage.classList.remove("invalid");
                     cropStage.classList.add("valid");
                 }
                 if (soilType.value === "") {
-                    soilError.textContent = "Please select soil type.";
+                    sError.textContent = "Please select soil type.";
                     soilType.classList.add("invalid");
                     v = false;
                 }
                 else {
-                    soilError.textContent = "";
+                    sError.textContent = "";
                     soilType.classList.remove("invalid");
                     soilType.classList.add("valid");
                 }
                 if (irrigation.value === "") {
-                    irrigationError.textContent = "Please select irrigation method.";
+                    iError.textContent = "Please select irrigation method.";
                     irrigation.classList.add("invalid");
                     v = false;
                 }
                 else {
-                    irrigationError.textContent = "";
+                    iError.textContent = "";
                     irrigation.classList.remove("invalid");
                     irrigation.classList.add("valid");
                 }
@@ -112,17 +112,17 @@
                 let today = new Date().toISOString().split("T")[0];
 
                 if (registrationDate.value === "") {
-                    dateError.textContent = "Registration date is required.";
+                    dError.textContent = "Registration date is required.";
                     registrationDate.classList.add("invalid");
                     v = false;
                 }
                 else if (registrationDate.value > today) {
-                    dateError.textContent = "Future registration dates are not allowed.";
+                    dError.textContent = "Future registration dates are not allowed.";
                     registrationDate.classList.add("invalid");
                     v = false;
                 }
                 else {
-                    dateError.textContent = "";
+                    dError.textContent = "";
                     registrationDate.classList.remove("invalid");
                     registrationDate.classList.add("valid");
                 }
@@ -348,7 +348,7 @@
                 <option value="harvesting">Harvesting</option>
             </select>
             <br>
-            <span id="cropStageError" class="error"></span>
+            <span id="cError" class="error"></span>
             <br>
 
 
@@ -361,7 +361,7 @@
                 <option value="sandy">Sandy Soil</option>
             </select>
             <br>
-            <span id="soilError" class="error"></span>
+            <span id="sError" class="error"></span>
             <br>
 
 
@@ -373,7 +373,7 @@
                 <option value="flood">Flood Irrigation</option>
             </select>
             <br>
-            <span id="irrigationError" class="error"></span>
+            <span id="iError" class="error"></span>
             <br>
 
 
@@ -384,7 +384,7 @@
                 name="registrationDate">
 
             <br>
-            <span id="dateError" class="error"></span>
+            <span id="dError" class="error"></span>
             <br>
 
         </fieldset>
