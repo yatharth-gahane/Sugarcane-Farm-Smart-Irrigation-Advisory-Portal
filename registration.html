@@ -13,11 +13,13 @@
                 let plotId = document.getElementById("plotId").value.trim();
                 let village = document.getElementById("village").value.trim();
                 let mobile = document.getElementById("mobile").value.trim();
+                let email = document.getElementById("email").value.trim();
 
                 let fError = document.getElementById("fError");
                 let pError = document.getElementById("pError");
                 let vError = document.getElementById("vError");
                 let mError = document.getElementById("mError");
+                let eError = document.getElementById("eError");
 
                 if (farmerName === ""){
                     fError.textContent = "Farmer name is required.";
@@ -41,9 +43,39 @@
                     vError.textContent = "";
                 }
                 
+                let mobilePattern = /^[6-9][0-9]{9}$/;
+
+                if (mobile === ""){
+                mError.textContent = "Mobile number is required.";
+                v = false;
+                }
+                else if (!mobilePattern.test(mobile)){
+                mError.textContent = "Enter a valid 10-digit Indian mobile number.";
+                v = false;
+                }
+                else{
+                mError.textContent = "";
+                }
+
+                let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (email === ""){
+                eError.textContent = "Email address is required.";
+                v = false;
+                }
+                else if (!emailPattern.test(email)){
+                eError.textContent = "Enter a valid email address.";
+                v = false;
+                }
+                else{
+                eError.textContent = "";
+                }
+
                 document.getElementById("farmerName").value = farmerName;
                 document.getElementById("plotId").value = plotId;
                 document.getElementById("village").value = village;
+                document.getElementById("mobile").value = mobile;
+                document.getElementById("email").value = email;
 
                 return v;
             }
@@ -93,14 +125,18 @@
                 name="mobile"
                 placeholder="Enter mobile number"
             >
-
+            <br>
+            <span id="mError" class="error"></span>
+            <br>
             <label for="email">Email Address:</label>
             <input
                 type="text"
                 id="email"
                 name="email"
                 placeholder="Enter email address">
-
+            <br>
+            <span id="eError" class="error"></span>
+            <br>
             <label for="village">Village:</label>
             <input
                 type="text"
