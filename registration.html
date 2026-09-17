@@ -7,8 +7,8 @@
         <link rel="icon" type="image/x-icon" href="fasal.png">
         <style> 
             .error { color: red; font-size: 14px; margin-left: 10px; } 
-            .valid { color: green; 
-            .invalid { border: 2px solid red; background-color: #ffe6e6;}} 
+            .valid { color: green; }
+            .invalid { border: 2px solid red; background-color: #ffe6e6;}
         </style> 
         <script>
             function validate(event){
@@ -28,10 +28,10 @@
                 let vError = document.getElementById("vError");
                 let mError = document.getElementById("mError");
                 let eError = document.getElementById("eError");
-                let cError = document.getElementById("cropStageError");
-                let sError = document.getElementById("soilError");
-                let iError = document.getElementById("irrigationError");
-                let dError = document.getElementById("dateError");
+                let cError = document.getElementById("cError");
+                let sError = document.getElementById("sError");
+                let iError = document.getElementById("iError");
+                let dError = document.getElementById("dError");
 
                 if (farmerName === ""){
                     fError.textContent = "Farmer name is required.";
@@ -244,20 +244,6 @@
                 name="area"
                 placeholder="Enter farm area"
             >
-
-            <label for="irrigation">Irrigation Method:</label>
-
-            <select
-                id="irrigation"
-                name="irrigation"
-                >
-
-                <option value="">Select Method</option>
-                <option value="drip">Drip Irrigation</option>
-                <option value="sprinkler">Sprinkler Irrigation</option>
-                <option value="flood">Flood Irrigation</option>
-
-            </select>
 
         </fieldset>
 
