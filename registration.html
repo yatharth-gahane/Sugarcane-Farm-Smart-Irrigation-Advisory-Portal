@@ -144,6 +144,74 @@
 
                 return v;
             }
+
+            function validateFarmerName(farmerName) {
+                return /^[A-Za-z ]+$/.test(farmerName);
+            }
+
+            function validateMobileNumber(mobileNumber) {
+                return /^\d{10}$/.test(mobileNumber);
+            }
+
+            function validatePlotId(plotId) {
+                return /^AGR-\d{4}$/.test(plotId);
+            }
+
+            function validateSoilMoisture(soilMoisture) {
+                return soilMoisture !== "" && Number(soilMoisture) >= 0 && Number(soilMoisture) <= 100;
+            }
+
+            function validateRegistration(event) {
+                event.preventDefault();
+
+                let farmerName = document.getElementById("farmerName").value.trim();
+                let mobileNumber = document.getElementById("mobile").value.trim();
+                let plotId = document.getElementById("plotId").value.trim();
+                let soilMoisture = document.getElementById("soilMoisture").value;
+                let cropStage = document.getElementById("cropStage").value;
+                let irrigationDate = document.getElementById("irrigationDate").value;
+                let isValid = true;
+
+                document.getElementById("fError").textContent = "";
+                document.getElementById("mError").textContent = "";
+                document.getElementById("pError").textContent = "";
+                document.getElementById("moistureError").textContent = "";
+                document.getElementById("cError").textContent = "";
+                document.getElementById("dError").textContent = "";
+                document.getElementById("registrationSuccess").textContent = "";
+
+                if (!validateFarmerName(farmerName)) {
+                    document.getElementById("fError").textContent = "Enter a farmer name using alphabets and spaces only.";
+                    isValid = false;
+                }
+                if (!validateMobileNumber(mobileNumber)) {
+                    document.getElementById("mError").textContent = "Mobile number must contain exactly 10 digits.";
+                    isValid = false;
+                }
+                if (!validatePlotId(plotId)) {
+                    document.getElementById("pError").textContent = "Plot ID must follow the format AGR-1234.";
+                    isValid = false;
+                }
+                if (!validateSoilMoisture(soilMoisture)) {
+                    document.getElementById("moistureError").textContent = "Soil moisture must be between 0 and 100.";
+                    isValid = false;
+                }
+                if (cropStage === "") {
+                    document.getElementById("cError").textContent = "Select a crop stage.";
+                    isValid = false;
+                }
+                if (irrigationDate === "") {
+                    document.getElementById("dError").textContent = "Select an irrigation date.";
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    document.getElementById("registrationSuccess").textContent =
+                        "Registration submitted successfully.";
+                }
+
+                return isValid;
+            }
         </script>
     </head>
     <body>
@@ -168,7 +236,7 @@
         <br>
         <h1>Farmer Registration</h1>
 
-    <form onsubmit="return validate(event)">
+    <form onsubmit="return validateRegistration(event)" novalidate>
 
         <fieldset>
 
@@ -180,6 +248,7 @@
                 id="farmerName"
                 name="farmerName"
                 placeholder="Enter farmer name"
+                required
             >
             <br>
             <span id="fError" class="error"> </span>
@@ -190,6 +259,7 @@
                 id="mobile"
                 name="mobile"
                 placeholder="Enter mobile number"
+                required
             >
             <br>
             <span id="mError" class="error"></span>
@@ -226,6 +296,7 @@
                 id="plotId"
                 name="plotId"
                 placeholder="Enter plot ID"
+                required
             >
             <br>
             <span id="pError" class="error"> </span>
@@ -346,6 +417,20 @@
             <span id="cError" class="error"></span>
             <br>
 
+            <label for="soilMoisture">Soil Moisture (%):</label>
+            <input
+                type="number"
+                id="soilMoisture"
+                name="soilMoisture"
+                min="0"
+                max="100"
+                step="0.1"
+                placeholder="Enter soil moisture"
+                required>
+            <br>
+            <span id="moistureError" class="error"></span>
+            <br>
+
 
             <label for="soilType">Soil Type:</label>
             <select id="soilType" name="soilType">
@@ -372,11 +457,12 @@
             <br>
 
 
-            <label for="registrationDate">Registration Date:</label>
+            <label for="irrigationDate">Irrigation Date:</label>
             <input 
                 type="date"
-                id="registrationDate"
-                name="registrationDate">
+                id="irrigationDate"
+                name="irrigationDate"
+                required>
 
             <br>
             <span id="dError" class="error"></span>
@@ -388,6 +474,7 @@
         <button type="submit">Submit</button>
 
         <button type="reset">Reset</button>
+        <p id="registrationSuccess" class="valid"></p>
 
     </form>
 

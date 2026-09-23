@@ -31,6 +31,93 @@
                 document.write("<p>Moisture deficit / water required: " + moistureDeficit + "%</p>");
                 document.write("<p>" + irrigationStatus + "</p>");
             }
+
+            function recommendIrrigation(event) {
+                event.preventDefault();
+
+                let soilMoisture = Number(document.getElementById("advisoryMoisture").value);
+                let rainExpected = document.getElementById("rainExpected").value === "yes";
+                let cropStage = document.getElementById("cropStage").value;
+                let recommendation;
+
+                if (rainExpected) {
+                    recommendation = "Postpone Irrigation: Rain is expected.";
+                } else if (soilMoisture < 30) {
+                    recommendation = "Irrigation Required Immediately.";
+                } else if (soilMoisture <= 50) {
+                    recommendation = "Monitor Soil Moisture.";
+                } else {
+                    recommendation = "Irrigation Not Required.";
+                }
+
+                document.getElementById("recommendationResult").textContent =
+                    "Crop stage: " + cropStage + ". " + recommendation;
+            }
+
+            let sugarcaneFarm = {
+                farmerName: "Yatharth Gahane",
+                plotId: "Plot A",
+                cropStage: "Grand Growth",
+                soilMoisture: 42,
+                area: 2.5,
+                pumpStatus: "Off",
+                displayFarmInformation: function() {
+                    document.getElementById("farmInformation").textContent =
+                        "Farmer: " + this.farmerName +
+                        " | Plot ID: " + this.plotId +
+                        " | Crop stage: " + this.cropStage +
+                        " | Soil moisture: " + this.soilMoisture + "%" +
+                        " | Area: " + this.area + " acres" +
+                        " | Pump status: " + this.pumpStatus;
+                }
+            };
+
+            let soilMoistureReadings = [42, 38, 35, 31, 28, 27, 34, 40, 45, 48, 44, 41];
+
+            function analyzeSensorReadings(event) {
+                event.preventDefault();
+
+                let criticalValue = Number(document.getElementById("criticalValue").value);
+                let minimumMoisture = Math.min(...soilMoistureReadings);
+                let maximumMoisture = Math.max(...soilMoistureReadings);
+                let totalMoisture = soilMoistureReadings.reduce(function(total, reading) {
+                    return total + reading;
+                }, 0);
+                let averageMoisture = totalMoisture / soilMoistureReadings.length;
+                let readingsBelowCritical = soilMoistureReadings.filter(function(reading) {
+                    return reading < criticalValue;
+                }).length;
+
+                document.getElementById("sensorResult").textContent =
+                    "Readings: " + soilMoistureReadings.join(", ") +
+                    " | Minimum: " + minimumMoisture + "%" +
+                    " | Maximum: " + maximumMoisture + "%" +
+                    " | Average: " + averageMoisture.toFixed(2) + "%" +
+                    " | Below critical value: " + readingsBelowCritical;
+            }
+
+            function validateFarmerDetails(event) {
+                event.preventDefault();
+
+                let farmerName = document.getElementById("validatedFarmerName").value.trim();
+                let mobileNumber = document.getElementById("mobileNumber").value.trim();
+                let plotId = document.getElementById("validatedPlotId").value.trim();
+                let validationMessages = [];
+
+                if (!/^[A-Za-z ]+$/.test(farmerName)) {
+                    validationMessages.push("Farmer name must contain only alphabets and spaces.");
+                }
+                if (!/^\d{10}$/.test(mobileNumber)) {
+                    validationMessages.push("Mobile number must contain exactly 10 digits.");
+                }
+                if (!/^AGR-\d{4}$/.test(plotId)) {
+                    validationMessages.push("Plot ID must follow the format AGR-1234.");
+                }
+
+                document.getElementById("validationResult").textContent = validationMessages.length === 0
+                    ? "All farmer details are valid."
+                    : validationMessages.join(" ");
+            }
         </script>
     </head>
     <body>
@@ -51,6 +138,69 @@
             <li><a href="calculation.html">Calculations</a></li>
             <li><a href="about-system.html">About</a></li>
         </ul>
+        <br>
+        <form onsubmit="recommendIrrigation(event)">
+            <h2 align="center">Irrigation Recommendation</h2>
+            <p>
+                <label for="advisoryMoisture">Soil moisture (%):</label>
+                <input type="number" id="advisoryMoisture" min="0" max="100" step="0.1" required>
+            </p>
+            <p>
+                <label for="rainExpected">Rainfall forecast:</label>
+                <select id="rainExpected" required>
+                    <option value="no">No rain expected</option>
+                    <option value="yes">Rain expected</option>
+                </select>
+            </p>
+            <p>
+                <label for="cropStage">Crop stage:</label>
+                <select id="cropStage" required>
+                    <option value="Germination">Germination</option>
+                    <option value="Tillering">Tillering</option>
+                    <option value="Grand Growth">Grand Growth</option>
+                    <option value="Maturity">Maturity</option>
+                </select>
+            </p>
+            <button type="submit">Get recommendation</button>
+            <p id="recommendationResult"></p>
+        </form>
+
+        <section>
+            <h2 align="center">Sugarcane Farm Information</h2>
+            <button type="button" onclick="sugarcaneFarm.displayFarmInformation()">Display farm information</button>
+            <p id="farmInformation"></p>
+        </section>
+
+        <br>
+        <form onsubmit="analyzeSensorReadings(event)">
+            <h2 align="center">Hourly Soil Moisture Sensor Readings</h2>
+            <p>Readings are stored for 12 hourly measurements.</p>
+            <p>
+                <label for="criticalValue">Critical moisture value (%):</label>
+                <input type="number" id="criticalValue" value="30" min="0" max="100" step="0.1" required>
+            </p>
+            <button type="submit">Analyze sensor readings</button>
+            <p id="sensorResult"></p>
+        </form>
+
+        <form onsubmit="validateFarmerDetails(event)">
+            <h2 align="center">Farmer Details Validation</h2>
+            <p>
+                <label for="validatedFarmerName">Farmer name:</label>
+                <input type="text" id="validatedFarmerName" required>
+            </p>
+            <p>
+                <label for="mobileNumber">Mobile number:</label>
+                <input type="tel" id="mobileNumber" inputmode="numeric" required>
+            </p>
+            <p>
+                <label for="validatedPlotId">Plot ID:</label>
+                <input type="text" id="validatedPlotId" placeholder="AGR-1234" required>
+            </p>
+            <button type="submit">Validate details</button>
+            <p id="validationResult"></p>
+        </form>
+
         <br>
         <form onsubmit="calculateIrrigation(event)">
             <h2 align="center">Irrigation Calculation</h2>
