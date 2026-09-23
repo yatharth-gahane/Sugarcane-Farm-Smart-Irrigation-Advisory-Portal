@@ -5,7 +5,32 @@
         <link rel="stylesheet" href="style.css">
         <link rel="icon" type="image/x-icon" href="fasal.png">
         <script>
-            
+            function calculateIrrigation(event) {
+                event.preventDefault();
+
+                let farmerName = document.getElementById("farmerName").value.trim();
+                let plotId = document.getElementById("plotId").value.trim();
+                let currentSoilMoisture = Number(document.getElementById("currentMoisture").value);
+                let requiredSoilMoisture = Number(document.getElementById("requiredMoisture").value);
+                let moistureDeficit = requiredSoilMoisture - currentSoilMoisture;
+                let irrigationStatus;
+
+                if (moistureDeficit > 0) {
+                    irrigationStatus = "Irrigation required. Water needed: " + moistureDeficit + "% moisture.";
+                } else {
+                    moistureDeficit = 0;
+                    irrigationStatus = "No irrigation required. The soil moisture level is sufficient.";
+                }
+
+                alert(irrigationStatus);
+                document.write("<h1>Smart Irrigation Result</h1>");
+                document.write("<p>Farmer: " + farmerName + "</p>");
+                document.write("<p>Plot ID: " + plotId + "</p>");
+                document.write("<p>Current soil moisture: " + currentSoilMoisture + "%</p>");
+                document.write("<p>Required soil moisture: " + requiredSoilMoisture + "%</p>");
+                document.write("<p>Moisture deficit / water required: " + moistureDeficit + "%</p>");
+                document.write("<p>" + irrigationStatus + "</p>");
+            }
         </script>
     </head>
     <body>
@@ -27,7 +52,26 @@
             <li><a href="about-system.html">About</a></li>
         </ul>
         <br>
-
+        <form onsubmit="calculateIrrigation(event)">
+            <h2 align="center">Irrigation Calculation</h2>
+            <p>
+                <label for="farmerName">Farmer name:</label>
+                <input type="text" id="farmerName" required>
+            </p>
+            <p>
+                <label for="plotId">Plot ID:</label>
+                <input type="text" id="plotId" required>
+            </p>
+            <p>
+                <label for="currentMoisture">Current soil moisture (%):</label>
+                <input type="number" id="currentMoisture" min="0" max="100" step="0.1" required>
+            </p>
+            <p>
+                <label for="requiredMoisture">Required soil moisture (%):</label>
+                <input type="number" id="requiredMoisture" min="0" max="100" step="0.1" required>
+            </p>
+            <button type="submit">Calculate water required</button>
+        </form>
 
         <br>
         <footer>
