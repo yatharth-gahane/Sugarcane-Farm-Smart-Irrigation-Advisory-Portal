@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="icon" type="image/x-icon" href="fasal.png">
         <script>
-            function calculateIrrigation(event) {
+            function calculateIrrig(event) {
                 event.preventDefault();
 
                 let farmerName = document.getElementById("farmerName").value.trim();
@@ -32,7 +32,7 @@
                 document.write("<p>" + irrigationStatus + "</p>");
             }
 
-            function recommendIrrigation(event) {
+            function recommend(event) {
                 event.preventDefault();
 
                 let soilMoisture = Number(document.getElementById("advisoryMoisture").value);
@@ -55,7 +55,7 @@
             }
 
             let sugarcaneFarm = {
-                farmerName: "Yatharth Gahane",
+                farmerName: "Vivek Kumar",
                 plotId: "Plot A",
                 cropStage: "Grand Growth",
                 soilMoisture: 42,
@@ -74,7 +74,7 @@
 
             let soilMoistureReadings = [42, 38, 35, 31, 28, 27, 34, 40, 45, 48, 44, 41];
 
-            function analyzeSensorReadings(event) {
+            function analyze(event) {
                 event.preventDefault();
 
                 let criticalValue = Number(document.getElementById("criticalValue").value);
@@ -96,7 +96,7 @@
                     " | Below critical value: " + readingsBelowCritical;
             }
 
-            function validateFarmerDetails(event) {
+            function validateFarm(event) {
                 event.preventDefault();
 
                 let farmerName = document.getElementById("validatedFarmerName").value.trim();
@@ -139,7 +139,7 @@
             <li><a href="about-system.html">About</a></li>
         </ul>
         <br>
-        <form onsubmit="recommendIrrigation(event)">
+        <form onsubmit="recommend(event)">
             <h2 align="left">Irrigation Recommendation</h2>
             <p>
                 <label for="advisoryMoisture">Soil moisture (%):</label>
@@ -172,7 +172,7 @@
         </section>
 
         <br>
-        <form onsubmit="analyzeSensorReadings(event)">
+        <form onsubmit="analyze(event)">
             <h2 align="left">Hourly Soil Moisture Sensor Readings</h2>
             <p>Readings are stored for 12 hourly measurements.</p>
             <p>
@@ -183,7 +183,7 @@
             <p id="sensorResult"></p>
         </form>
 
-        <form onsubmit="validateFarmerDetails(event)">
+        <form onsubmit="validateFarm(event)">
             <h2 align="left">Farmer Details Validation</h2>
             <p>
                 <label for="validatedFarmerName">Farmer name:</label>
@@ -202,7 +202,7 @@
         </form>
 
         <br>
-        <form onsubmit="calculateIrrigation(event)">
+        <form onsubmit="calculateIrrig(event)">
             <h2 align="left">Irrigation Calculation</h2>
             <p>
                 <label for="farmerName">Farmer name:</label>
