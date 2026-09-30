@@ -11,193 +11,66 @@
             .invalid { border: 2px solid red; background-color: #ffe6e6;}
         </style> 
         <script>
-            function validate(event){
-                let v = true;
-                let farmerName = document.getElementById("farmerName").value.trim();
-                let plotId = document.getElementById("plotId").value.trim();
-                let village = document.getElementById("village").value.trim();
-                let mobile = document.getElementById("mobile").value.trim();
-                let email = document.getElementById("email").value.trim();
-                let cropStage = document.getElementById("cropStage");
-                let soilType = document.getElementById("soilType");
-                let irrigation = document.getElementById("irrigation");
-                let registrationDate = document.getElementById("registrationDate");
-
-                let fError = document.getElementById("fError");
-                let pError = document.getElementById("pError");
-                let vError = document.getElementById("vError");
-                let mError = document.getElementById("mError");
-                let eError = document.getElementById("eError");
-                let cError = document.getElementById("cError");
-                let sError = document.getElementById("sError");
-                let iError = document.getElementById("iError");
-                let dError = document.getElementById("dError");
-
-                if (farmerName === ""){
-                    fError.textContent = "Farmer name is required.";
-                    v = false;
-                } else if (!/^[a-zA-Z\s]+$/.test(farmerName)) {
-                    fError.textContent = "Farmer name must contain only alphabets and spaces";
-                    v = false;
-                } else {
-                    fError.textContent = "";
-                }
-                if (plotId === ""){
-                    pError.textContent = "Plot ID is required.";
-                    v = false;
-                } else {
-                    pError.textContent = "";
-                }
-                if (village === ""){
-                    vError.textContent = "Village is required.";
-                    v = false;
-                } else {
-                    vError.textContent = "";
-                }
-                
-                let mobilePattern = /^[6-9][0-9]{9}$/;
-
-                if (mobile === ""){
-                mError.textContent = "Mobile number is required.";
-                v = false;
-                }
-                else if (!mobilePattern.test(mobile)){
-                mError.textContent = "Enter a valid 10-digit Indian mobile number.";
-                v = false;
-                }
-                else{
-                mError.textContent = "";
-                }
-
-                let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-                if (email === ""){
-                eError.textContent = "Email address is required.";
-                v = false;
-                }
-                else if (!emailPattern.test(email)){
-                eError.textContent = "Enter a valid email address.";
-                v = false;
-                }
-                else{
-                eError.textContent = "";
-                }
-                if (cropStage.value === "") {
-                    cError.textContent = "Please select crop stage.";
-                    cropStage.classList.add("invalid");
-                    v = false;
-                }
-                else {
-                    cError.textContent = "";
-                    cropStage.classList.remove("invalid");
-                    cropStage.classList.add("valid");
-                }
-                if (soilType.value === "") {
-                    sError.textContent = "Please select soil type.";
-                    soilType.classList.add("invalid");
-                    v = false;
-                }
-                else {
-                    sError.textContent = "";
-                    soilType.classList.remove("invalid");
-                    soilType.classList.add("valid");
-                }
-                if (irrigation.value === "") {
-                    iError.textContent = "Please select irrigation method.";
-                    irrigation.classList.add("invalid");
-                    v = false;
-                }
-                else {
-                    iError.textContent = "";
-                    irrigation.classList.remove("invalid");
-                    irrigation.classList.add("valid");
-                }
-                
-                let today = new Date().toISOString().split("T")[0];
-
-                if (registrationDate.value === "") {
-                    dError.textContent = "Registration date is required.";
-                    registrationDate.classList.add("invalid");
-                    v = false;
-                }
-                else if (registrationDate.value > today) {
-                    dError.textContent = "Future registration dates are not allowed.";
-                    registrationDate.classList.add("invalid");
-                    v = false;
-                }
-                else {
-                    dError.textContent = "";
-                    registrationDate.classList.remove("invalid");
-                    registrationDate.classList.add("valid");
-                }
-
-                document.getElementById("farmerName").value = farmerName;
-                document.getElementById("plotId").value = plotId;
-                document.getElementById("village").value = village;
-                document.getElementById("mobile").value = mobile;
-                document.getElementById("email").value = email;
-
-                if(v){
-                    event.preventDefault();
-                    alert("Registration submitted successfully!");
-                }
-
-                return v;
-            }
-
-            function validateFarmerName(farmerName) {
-                return /^[A-Za-z ]+$/.test(farmerName);
-            }
-
-            function validateMobileNumber(mobileNumber) {
-                return /^\d{10}$/.test(mobileNumber);
-            }
-
-            function validatePlotId(plotId) {
-                return /^AGR-\d{4}$/.test(plotId);
-            }
-
-            function validateSoilMoisture(soilMoisture) {
-                return soilMoisture !== "" && Number(soilMoisture) >= 0 && Number(soilMoisture) <= 100;
-            }
-
-            function validateRegistration(event) {
+            function validate(event) {
                 event.preventDefault();
 
-                let farmerName = document.getElementById("farmerName").value.trim();
-                let mobileNumber = document.getElementById("mobile").value.trim();
-                let plotId = document.getElementById("plotId").value.trim();
-                let soilMoisture = document.getElementById("soilMoisture").value;
-                let cropStage = document.getElementById("cropStage").value;
-                let irrigationDate = document.getElementById("irrigationDate").value;
-                let isValid = true;
+                const farmerName = document.getElementById("farmerName").value.trim();
+                const mobile = document.getElementById("mobile").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const village = document.getElementById("village").value.trim();
+                const plotId = document.getElementById("plotId").value.trim();
+                const soilMoisture = document.getElementById("soilMoisture").value;
+                const cropStage = document.getElementById("cropStage").value;
+                const soilType = document.getElementById("soilType").value;
+                const irrigation = document.getElementById("irrigation").value;
+                const irrigationDate = document.getElementById("irrigationDate").value;
+                const errors = ["fError", "mError", "eError", "vError", "pError", "moistureError", "cError", "sError", "iError", "dError"];
 
-                document.getElementById("fError").textContent = "";
-                document.getElementById("mError").textContent = "";
-                document.getElementById("pError").textContent = "";
-                document.getElementById("moistureError").textContent = "";
-                document.getElementById("cError").textContent = "";
-                document.getElementById("dError").textContent = "";
+                errors.forEach(id => document.getElementById(id).textContent = "");
                 document.getElementById("registrationSuccess").textContent = "";
 
-                if (!validateFarmerName(farmerName)) {
-                    document.getElementById("fError").textContent = "Enter a farmer name using alphabets and spaces only.";
+                let isValid = true;
+
+                if (farmerName === "") {
+                    document.getElementById("fError").textContent = "Farmer name is required.";
+                    isValid = false;
+                } else if (!/^[A-Za-z ]+$/.test(farmerName)) {
+                    document.getElementById("fError").textContent = "Farmer name must contain only alphabets and spaces.";
                     isValid = false;
                 }
-                if (!validateMobileNumber(mobileNumber)) {
-                    document.getElementById("mError").textContent = "Mobile number must contain exactly 10 digits.";
+                if (!/^[6-9][0-9]{9}$/.test(mobile)) {
+                    document.getElementById("mError").textContent = "Enter a valid 10-digit Indian mobile number.";
                     isValid = false;
                 }
-                if (!validatePlotId(plotId)) {
+                if (email === "") {
+                    document.getElementById("eError").textContent = "Email address is required.";
+                    isValid = false;
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    document.getElementById("eError").textContent = "Enter a valid email address.";
+                    isValid = false;
+                }
+                if (village === "") {
+                    document.getElementById("vError").textContent = "Village is required.";
+                    isValid = false;
+                }
+                if (!/^AGR-[0-9]{4}$/.test(plotId)) {
                     document.getElementById("pError").textContent = "Plot ID must follow the format AGR-1234.";
                     isValid = false;
                 }
-                if (!validateSoilMoisture(soilMoisture)) {
+                if (soilMoisture === "" || !Number.isFinite(Number(soilMoisture)) || Number(soilMoisture) < 0 || Number(soilMoisture) > 100) {
                     document.getElementById("moistureError").textContent = "Soil moisture must be between 0 and 100.";
                     isValid = false;
                 }
                 if (cropStage === "") {
                     document.getElementById("cError").textContent = "Select a crop stage.";
+                    isValid = false;
+                }
+                if (soilType === "") {
+                    document.getElementById("sError").textContent = "Please select soil type.";
+                    isValid = false;
+                }
+                if (irrigation === "") {
+                    document.getElementById("iError").textContent = "Please select irrigation method.";
                     isValid = false;
                 }
                 if (irrigationDate === "") {
@@ -206,8 +79,7 @@
                 }
 
                 if (isValid) {
-                    document.getElementById("registrationSuccess").textContent =
-                        "Registration submitted successfully.";
+                    document.getElementById("registrationSuccess").textContent = "Registration submitted successfully.";
                 }
 
                 return isValid;
@@ -236,7 +108,7 @@
         <br>
         <h1>Farmer Registration</h1>
 
-    <form onsubmit="return validateRegistration(event)" novalidate>
+    <form onsubmit="return validate(event)" novalidate>
 
         <fieldset>
 
